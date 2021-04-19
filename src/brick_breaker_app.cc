@@ -10,11 +10,11 @@ namespace brickbreaker {
         ci::Color background_color("black");
         ci::gl::clear(background_color);
 
-        //container_.Display();
+        container_.Display();
     }
 
     void BrickBreakerApp::update() {
-        //container_.AdvanceOneFrame();
+        container_.Update();
     }
 
-}  // namespace idealgas
+}  // namespace brickbreaker

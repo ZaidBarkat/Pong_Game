@@ -13,9 +13,9 @@ namespace brickbreaker {
     public:
         Container();
 
-        void display() override;
-        void update() override;
+        void Display() override;
+        void Update() override;
 
     };
 
-}  // namespace idealgas
+}  // namespace brickbreaker
