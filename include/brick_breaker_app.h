@@ -18,7 +18,7 @@ namespace brickbreaker {
         void update() override;
 
         // provided that you can see the entire UI on your screen.
-        const int kWindowSize = 1500;
+        const int kWindowSize = 1000;
         const int kMargin = 100;
 
         Container container_;

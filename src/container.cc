@@ -2,19 +2,21 @@
 
 namespace brickbreaker {
 
+    using glm::vec2;
+
     Container::Container() {
-        ci::app::setWindowSize(kWindowSize, kWindowSize);
+
     }
 
     void Container::Display() {
-        ci::Color background_color("black");
-        ci::gl::clear(background_color);
+        ci::gl::color(ci::Color("white"));
+        ci::gl::drawStrokedRect(ci::Rectf(vec2(kContainerLeftX, kContainerTopY),
+                                          vec2(kContainerRightX, kContainerBottomY)));
 
-        //container_.Display();
     }
 
     void Container::Update() {
-        //container_.AdvanceOneFrame();
+
     }
 
 }  // namespace brickbreaker

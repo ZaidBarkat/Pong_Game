@@ -13,9 +13,14 @@ namespace brickbreaker {
     public:
         Container();
 
-        void Display() override;
-        void Update() override;
+        void Display();
+        void Update();
 
+    private:
+        static constexpr float kContainerLeftX = 5;
+        static constexpr float kContainerTopY = 5;
+        static constexpr float kContainerRightX = 1000;
+        static constexpr float kContainerBottomY = 1000;
     };
 
 }  // namespace brickbreaker
