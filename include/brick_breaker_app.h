@@ -21,6 +21,7 @@ namespace brickbreaker {
         const int kWindowSize = 1000;
         const int kMargin = 100;
 
+    private:
         Container container_;
 
     };

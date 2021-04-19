@@ -1,8 +1,37 @@
-//
-// Created by zaids on 4/19/2021.
-//
+#pragma once
 
-#ifndef NAIVE_BAYES_BALL_H
-#define NAIVE_BAYES_BALL_H
+#include "cinder/app/App.h"
+#include "cinder/app/RendererGl.h"
+#include "cinder/gl/gl.h"
 
-#endif //NAIVE_BAYES_BALL_H
+namespace brickbreaker {
+
+    using glm::vec2;
+
+/**
+ * An container for the Brick Breaker game.
+ */
+    class Ball {
+    public:
+        Ball(vec2 top_left, vec2 bottom_right);
+
+        Ball();
+
+        void Draw();
+
+        void Update();
+
+        void UpdatePosition();
+
+        bool IsEndGame();
+
+    private:
+        vec2 position_;
+        vec2 velocity_ = vec2(0, 1);
+
+        vec2 top_left_container_;
+        vec2 bottom_right_container_;
+        static constexpr float kRadius = 10;
+    };
+
+}  // namespace brickbreaker
