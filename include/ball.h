@@ -19,7 +19,8 @@ namespace brickbreaker {
 
         void Draw();
 
-        void Update();
+        bool CollidesWithLine(vec2 top_left, vec2 bottom_right);
+        void CollidesWithWall(vec2 top_left, vec2 bottom_right);
 
         void UpdatePosition();
 
@@ -27,7 +28,7 @@ namespace brickbreaker {
 
     private:
         vec2 position_;
-        vec2 velocity_ = vec2(0, 1);
+        vec2 velocity_ = vec2(4, -2);
 
         vec2 top_left_container_;
         vec2 bottom_right_container_;

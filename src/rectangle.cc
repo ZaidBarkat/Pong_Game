@@ -21,4 +21,12 @@ namespace brickbreaker {
                                           rectangle_bottom_right_));
     }
 
+    const vec2 &Rectangle::GetRectangleTopLeft() const {
+        return rectangle_top_left_;
+    }
+
+    const vec2 &Rectangle::GetRectangleBottomRight() const {
+        return rectangle_bottom_right_;
+    }
+
 }  // namespace brickbreaker

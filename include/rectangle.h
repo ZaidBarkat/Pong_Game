@@ -21,6 +21,10 @@ namespace brickbreaker {
 
         void Update();
 
+        const vec2 &GetRectangleTopLeft() const;
+
+        const vec2 &GetRectangleBottomRight() const;
+
 
     protected:
         vec2 rectangle_top_left_;
