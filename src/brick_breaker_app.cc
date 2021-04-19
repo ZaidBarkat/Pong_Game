@@ -17,4 +17,15 @@ namespace brickbreaker {
         container_.Update();
     }
 
+    void BrickBreakerApp::keyDown(ci::app::KeyEvent event) {
+        switch (event.getCode()) {
+            case ci::app::KeyEvent::KEY_RIGHT:
+                container_.PlayerRight();
+                break;
+
+            case ci::app::KeyEvent::KEY_LEFT:
+                container_.PlayerLeft();
+                break;
+        }
+    }
 }  // namespace brickbreaker

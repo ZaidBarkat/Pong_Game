@@ -4,6 +4,8 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "ball.h"
+#include "rectangle.h"
+#include "player_rectangle.h"
 
 namespace brickbreaker {
 
@@ -16,14 +18,21 @@ namespace brickbreaker {
 
         void Display();
         void Update();
+        void PlayerRight();
+        void PlayerLeft() ;
 
     private:
-        static constexpr float kContainerLeftX = 5;
-        static constexpr float kContainerTopY = 5;
+        static constexpr float kContainerLeftX = 0;
+        static constexpr float kContainerTopY = 0;
         static constexpr float kContainerRightX = 1000;
         static constexpr float kContainerBottomY = 1000;
+        static constexpr int kSizeOfRectangle = 100;
+        static constexpr int kNumberOfRows = 3;
+        static constexpr int kNumberOfColumns = 10;
 
         Ball ball_;
+        PlayerRectangle player_rectangle_;
+        std::vector<Rectangle> rectangles_;
     };
 
 }  // namespace brickbreaker

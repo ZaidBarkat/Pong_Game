@@ -52,7 +52,9 @@ get_filename_component(APP_PATH "${CMAKE_CURRENT_SOURCE_DIR}/" ABSOLUTE)
 include("${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake")
 
 list(APPEND CORE_SOURCE_FILES src/container.cc
-        src/ball.cc)
+        src/ball.cc
+        src/rectangle.cc
+        src/player_rectangle.cc)
 
 list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
 src/brick_breaker_app.cc)

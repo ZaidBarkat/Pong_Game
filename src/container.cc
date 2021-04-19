@@ -5,7 +5,21 @@ namespace brickbreaker {
     using glm::vec2;
 
     Container::Container() {
-        ball_ = Ball(vec2(kContainerLeftX, kContainerTopY), vec2(kContainerRightX, kContainerBottomY));
+        ball_ = Ball(vec2(kContainerLeftX, kContainerTopY),
+                     vec2(kContainerRightX, kContainerBottomY));
+
+        player_rectangle_ = PlayerRectangle(vec2(500, 800), vec2(700, 850));
+
+        int increment_column = 0;
+        while (rectangles_.size() != kNumberOfRows * kNumberOfColumns) {
+            float row_size = kContainerBottomY / kNumberOfRows - kSizeOfRectangle;
+            for (int increment_row = (int) kContainerLeftX; increment_row < (int) row_size; increment_row += kSizeOfRectangle) {
+                Rectangle rectangle(vec2(increment_column, increment_row), vec2(increment_column + kSizeOfRectangle, increment_row + kSizeOfRectangle));
+                rectangles_.push_back(rectangle);
+            }
+            increment_column += (int) kSizeOfRectangle;
+        }
+
     }
 
     void Container::Display() {
@@ -13,6 +27,10 @@ namespace brickbreaker {
         ci::gl::drawStrokedRect(ci::Rectf(vec2(kContainerLeftX, kContainerTopY),
                                           vec2(kContainerRightX, kContainerBottomY)));
         ball_.Draw();
+        player_rectangle_.Draw();
+        for (Rectangle &rectangle: rectangles_) {
+            rectangle.Draw();
+        }
 
     }
 
@@ -22,6 +40,14 @@ namespace brickbreaker {
         if (ball_.IsEndGame()) {
             exit(0);
         }
+    }
+
+    void Container::PlayerRight() {
+        player_rectangle_.GoRight();
+    }
+
+    void Container::PlayerLeft() {
+        player_rectangle_.GoLeft();
     }
 
 }  // namespace brickbreaker

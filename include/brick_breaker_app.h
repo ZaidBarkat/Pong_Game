@@ -16,6 +16,7 @@ namespace brickbreaker {
 
         void draw() override;
         void update() override;
+        void keyDown(ci::app::KeyEvent event) override;
 
         // provided that you can see the entire UI on your screen.
         const int kWindowSize = 1000;

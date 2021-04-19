@@ -1,8 +1,30 @@
-//
-// Created by zaids on 4/19/2021.
-//
+#pragma once
 
-#ifndef NAIVE_BAYES_RECTANGLE_H
-#define NAIVE_BAYES_RECTANGLE_H
+#include "cinder/app/App.h"
+#include "cinder/app/RendererGl.h"
+#include "cinder/gl/gl.h"
 
-#endif //NAIVE_BAYES_RECTANGLE_H
+namespace brickbreaker {
+
+    using glm::vec2;
+
+/**
+ * An container for the Brick Breaker game.
+ */
+    class Rectangle {
+    public:
+        Rectangle(vec2 top_left, vec2 bottom_right);
+
+        Rectangle();
+
+        void Draw();
+
+        void Update();
+
+
+    protected:
+        vec2 rectangle_top_left_;
+        vec2 rectangle_bottom_right_;
+    };
+
+}  // namespace brickbreaker
