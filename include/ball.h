@@ -28,11 +28,12 @@ namespace brickbreaker {
 
     private:
         vec2 position_;
-        vec2 velocity_ = vec2(4, -2);
+        vec2 velocity_ = vec2(2, -2);
 
         vec2 top_left_container_;
         vec2 bottom_right_container_;
-        static constexpr float kRadius = 10;
+        static constexpr float kRadius = 8;
+
     };
 
 }  // namespace brickbreaker

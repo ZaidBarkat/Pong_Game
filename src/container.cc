@@ -50,7 +50,7 @@ namespace brickbreaker {
 
         ball_.UpdatePosition();
 
-        if (ball_.IsEndGame()) {
+        if (ball_.IsEndGame() || rectangles_.empty()) {
             exit(0);
         }
     }

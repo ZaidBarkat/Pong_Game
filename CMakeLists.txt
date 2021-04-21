@@ -59,7 +59,7 @@ list(APPEND CORE_SOURCE_FILES src/container.cc
 list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
 src/brick_breaker_app.cc)
 
-list(APPEND TEST_FILES tests/test_brick_breaker.cc
+list(APPEND TEST_FILES tests/test_ball.cc
         )
 
 

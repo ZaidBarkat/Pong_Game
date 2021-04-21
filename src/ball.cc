@@ -27,13 +27,13 @@ namespace brickbreaker {
         // if the position in the x direction is either hitting the left or right wall
 
         if ((position_.x + kRadius == top_left.x || position_.x - kRadius == bottom_right.x) &&
-        position_.y >= top_left.y && position_.y <= bottom_right.y) {
+        position_.y + kRadius >= top_left.y && position_.y - kRadius <= bottom_right.y) {
             velocity_ = vec2(-velocity_.x, velocity_.y);
             return true;
         }
             // if the position in the y direction is hitting the top or bottom wall
         else if ((position_.y + kRadius == top_left.y || position_.y - kRadius == bottom_right.y) &&
-        position_.x >= top_left.x && position_.x <= bottom_right.x) {
+        position_.x + kRadius >= top_left.x && position_.x - kRadius <= bottom_right.x) {
             velocity_ = vec2(velocity_.x, -velocity_.y);
             return true;
         }
