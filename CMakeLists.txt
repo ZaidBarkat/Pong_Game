@@ -60,7 +60,7 @@ list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
 src/brick_breaker_app.cc)
 
 list(APPEND TEST_FILES tests/test_ball.cc
-        )
+        tests/test_player_rectangle.cc)
 
 
 ci_make_app(

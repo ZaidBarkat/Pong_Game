@@ -58,4 +58,16 @@ namespace brickbreaker {
         return position_.y + kRadius >= bottom_right_container_.y;
     }
 
+    const vec2 &Ball::GetVelocity() const {
+        return velocity_;
+    }
+
+    const vec2 &Ball::GetPosition() const {
+        return position_;
+    }
+
+    void Ball::SetPosition(const vec2 &position) {
+        position_ = position;
+    }
+
 }  // namespace brickbreaker

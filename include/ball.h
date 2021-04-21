@@ -26,6 +26,12 @@ namespace brickbreaker {
 
         bool IsEndGame();
 
+        const vec2 &GetVelocity() const;
+
+        const vec2 &GetPosition() const;
+
+        void SetPosition(const vec2 &position);
+
     private:
         vec2 position_;
         vec2 velocity_ = vec2(2, -2);

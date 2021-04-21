@@ -1,13 +1,55 @@
 
 #include <catch2/catch.hpp>
+#include <ball.h>
 
 using glm::vec2;
-using brickbreaker::GasContainer;
-using brickbreaker::Particle;
 
-TEST_CASE("Start tests") {
+TEST_CASE("Ball Tests") {
+    brickbreaker::Ball ball(vec2(0, 0), vec2(1000, 1000));
 
-SECTION("Do Something") {
-REQUIRE(2 == 2);
-}
+    SECTION("test colliding with rectangle") {
+
+        SECTION("test colliding with bottom line") {
+            REQUIRE(ball.CollidesWithLine(vec2(500, 500), vec2(600, 492)));
+        }
+        SECTION("test colliding with top line") {
+            REQUIRE(ball.CollidesWithLine(vec2(500, 508), vec2(600, 600)));
+        }
+        SECTION("test colliding with right line") {
+            REQUIRE(ball.CollidesWithLine(vec2(500, 500), vec2(492, 500)));
+        }
+        SECTION("test colliding with left line") {
+            REQUIRE(ball.CollidesWithLine(vec2(508, 500), vec2(500, 500)));
+        }
+    }
+
+    SECTION("test colliding with wall") {
+
+        SECTION("test colliding with bottom wall") {
+            ball.CollidesWithWall(vec2(400, 500), vec2(510, 500));
+            REQUIRE(ball.GetVelocity() == vec2(2, 2));
+        }
+        SECTION("test colliding with top wall") {
+            ball.CollidesWithWall(vec2(400, 490), vec2(510, 600));
+            REQUIRE(ball.GetVelocity() == vec2(2, -2));
+        }
+        SECTION("test colliding with right wall") {
+            ball.CollidesWithWall(vec2(500, 400), vec2(600, 500));
+            REQUIRE(ball.GetVelocity() == vec2(-2, -2));
+        }
+        SECTION("test colliding with left wall") {
+            ball.CollidesWithWall(vec2(300, 200), vec2(500, 300));
+            REQUIRE(ball.GetVelocity() == vec2(-2, -2));
+        }
+    }
+
+    SECTION("test updating position") {
+        ball.UpdatePosition();
+        REQUIRE(ball.GetPosition() == vec2(502, 498));
+    }
+
+    SECTION("test end game condition") {
+        ball.SetPosition(vec2(500, 1000));
+        REQUIRE(ball.IsEndGame());
+    }
 }
