@@ -3,6 +3,7 @@
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
+#include "ball.h"
 
 namespace brickbreaker {
 
@@ -19,7 +20,7 @@ namespace brickbreaker {
 
         void Draw();
 
-        void Update();
+        void Update(Ball& ball);
 
         const vec2 &GetRectangleTopLeft() const;
 

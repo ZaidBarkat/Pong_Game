@@ -8,7 +8,6 @@ namespace brickbreaker {
 
     Ball::Ball(vec2 top_left, vec2 bottom_right) {
         position_ = vec2(bottom_right.x / 2, bottom_right.y / 2);
-        top_left_container_ = top_left;
         bottom_right_container_ = bottom_right;
 
     }
@@ -68,6 +67,14 @@ namespace brickbreaker {
 
     void Ball::SetPosition(const vec2 &position) {
         position_ = position;
+    }
+
+    void Ball::SetVelocity(const vec2 &velocity) {
+        velocity_ = velocity;
+    }
+
+    const float Ball::GetKRadius() {
+        return kRadius;
     }
 
 }  // namespace brickbreaker

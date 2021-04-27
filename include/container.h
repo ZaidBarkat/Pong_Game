@@ -6,6 +6,7 @@
 #include "ball.h"
 #include "rectangle.h"
 #include "player_rectangle.h"
+#include "brick.h"
 
 namespace brickbreaker {
 
@@ -32,7 +33,7 @@ namespace brickbreaker {
 
         Ball ball_;
         PlayerRectangle player_rectangle_;
-        std::vector<Rectangle> rectangles_;
+        std::vector<Brick> bricks_;
     };
 
 }  // namespace brickbreaker

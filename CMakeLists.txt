@@ -54,7 +54,8 @@ include("${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake")
 list(APPEND CORE_SOURCE_FILES src/container.cc
         src/ball.cc
         src/rectangle.cc
-        src/player_rectangle.cc)
+        src/player_rectangle.cc
+        src/brick.cpp)
 
 list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
 src/brick_breaker_app.cc)

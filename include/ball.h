@@ -30,13 +30,16 @@ namespace brickbreaker {
 
         const vec2 &GetPosition() const;
 
+        static const float GetKRadius();
+
         void SetPosition(const vec2 &position);
+
+        void SetVelocity(const vec2 &velocity);
 
     private:
         vec2 position_;
         vec2 velocity_ = vec2(2, -2);
 
-        vec2 top_left_container_;
         vec2 bottom_right_container_;
         static constexpr float kRadius = 8;
 
