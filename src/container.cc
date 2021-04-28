@@ -42,21 +42,23 @@ namespace brickbreaker {
     }
 
     void Container::Update() {
-        int bricks_hit = 0;
-
         for (size_t j = 0; j < balls_.size(); j++) {
+            int bricks_hit = 0;
             for (size_t i = 0; i < bricks_.size(); i++) {
                 bricks_[i].Update(balls_[j]);
 
-                if (bricks_[i].IsHidden() && new_balls_ != 4) {
-                    balls_.push_back(Ball(vec2(kContainerRightX, kContainerBottomY),
-                         vec2(2, 2)));
+                if (bricks_[i].IsHidden()) {
                     ++bricks_hit;
-                    ++new_balls_;
                 }
             }
 
-            if (balls_[j].IsEndGame() || bricks_hit == bricks_.size()) {
+            if (bricks_hit >= 3 && new_balls_ != 4) {
+                balls_.push_back(Ball(vec2(kContainerRightX, kContainerBottomY),
+                                      vec2(2, 2)));
+                new_balls_++;
+            }
+
+            if (bricks_hit == bricks_.size()) {
                 exit(0);
             }
 
