@@ -10,7 +10,7 @@ namespace brickbreaker {
     using glm::vec2;
 
 /**
- * An container for the Brick Breaker game.
+ * A container for the Brick Breaker game.
  */
     class Brick : public Rectangle {
     public:
@@ -25,7 +25,7 @@ namespace brickbreaker {
         bool IsHidden() const;
 
     private:
-        bool is_hidden;
+        bool is_hidden = false;
 
     };
 

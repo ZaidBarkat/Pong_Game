@@ -41,11 +41,11 @@ namespace brickbreaker {
         int bricks_hit = 0;
 
         for (size_t i = 0; i < bricks_.size(); i++) {
+            bricks_[i].Update(ball_);
+
             if (bricks_[i].IsHidden()) {
                 ++bricks_hit;
             }
-
-            bricks_[i].Update(ball_);
         }
 
         if (ball_.IsEndGame() || bricks_hit == bricks_.size()) {
