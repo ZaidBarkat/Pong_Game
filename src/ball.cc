@@ -6,8 +6,9 @@ namespace brickbreaker {
 
     Ball::Ball() {}
 
-    Ball::Ball(vec2 top_left, vec2 bottom_right) {
+    Ball::Ball(vec2 bottom_right, vec2 initial_velocity) {
         position_ = vec2(bottom_right.x / 2, bottom_right.y / 2);
+        velocity_ = initial_velocity;
         bottom_right_container_ = bottom_right;
 
     }

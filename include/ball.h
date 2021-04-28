@@ -13,7 +13,7 @@ namespace brickbreaker {
  */
     class Ball {
     public:
-        Ball(vec2 top_left, vec2 bottom_right);
+        Ball(vec2 bottom_right, vec2 initial_velocity_);
 
         Ball();
 
@@ -38,7 +38,7 @@ namespace brickbreaker {
 
     private:
         vec2 position_;
-        vec2 velocity_ = vec2(2, -2);
+        vec2 velocity_;
 
         vec2 bottom_right_container_;
         static constexpr float kRadius = 8;

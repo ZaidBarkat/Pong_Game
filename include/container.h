@@ -32,8 +32,10 @@ namespace brickbreaker {
         static constexpr int kNumberOfColumns = 10;
 
         Ball ball_;
+        std::vector<Ball> balls_;
         PlayerRectangle player_rectangle_;
         std::vector<Brick> bricks_;
+        int new_balls_ = 0;
     };
 
 }  // namespace brickbreaker

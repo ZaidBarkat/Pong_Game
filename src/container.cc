@@ -5,8 +5,9 @@ namespace brickbreaker {
     using glm::vec2;
 
     Container::Container() {
-        ball_ = Ball(vec2(kContainerLeftX, kContainerTopY),
-                     vec2(kContainerRightX, kContainerBottomY));
+        ball_ = Ball(vec2(kContainerRightX, kContainerBottomY),
+                     vec2(2, -2));
+        balls_.push_back(ball_);
 
         player_rectangle_ = PlayerRectangle(vec2(500, 800), vec2(700, 850));
 
@@ -30,7 +31,10 @@ namespace brickbreaker {
         ci::gl::drawStrokedRect(ci::Rectf(vec2(kContainerLeftX, kContainerTopY),
                                           vec2(kContainerRightX, kContainerBottomY)));
         player_rectangle_.Draw();
-        ball_.Draw();
+        //ball_.Draw();
+        for (Ball &ball: balls_) {
+            ball.Draw();
+        }
         for (Brick &brick: bricks_) {
             brick.Draw();
         }
@@ -40,23 +44,28 @@ namespace brickbreaker {
     void Container::Update() {
         int bricks_hit = 0;
 
-        for (size_t i = 0; i < bricks_.size(); i++) {
-            bricks_[i].Update(ball_);
+        for (size_t j = 0; j < balls_.size(); j++) {
+            for (size_t i = 0; i < bricks_.size(); i++) {
+                bricks_[i].Update(balls_[j]);
 
-            if (bricks_[i].IsHidden()) {
-                ++bricks_hit;
+                if (bricks_[i].IsHidden() && new_balls_ != 4) {
+                    balls_.push_back(Ball(vec2(kContainerRightX, kContainerBottomY),
+                         vec2(2, 2)));
+                    ++bricks_hit;
+                    ++new_balls_;
+                }
             }
+
+            if (balls_[j].IsEndGame() || bricks_hit == bricks_.size()) {
+                exit(0);
+            }
+
+            player_rectangle_.Update(balls_[j]);
+
+            balls_[j].CollidesWithWall(vec2(kContainerLeftX, kContainerTopY), vec2(kContainerRightX, kContainerBottomY));
+
+            balls_[j].UpdatePosition();
         }
-
-        if (ball_.IsEndGame() || bricks_hit == bricks_.size()) {
-            exit(0);
-        }
-
-        player_rectangle_.Update(ball_);
-
-        ball_.CollidesWithWall(vec2(kContainerLeftX, kContainerTopY), vec2(kContainerRightX, kContainerBottomY));
-
-        ball_.UpdatePosition();
     }
 
     void Container::PlayerRight() {
