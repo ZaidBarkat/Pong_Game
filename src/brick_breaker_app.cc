@@ -1,3 +1,4 @@
+#include <computer_player.h>
 #include "brick_breaker_app.h"
 
 namespace brickbreaker {
@@ -25,6 +26,12 @@ namespace brickbreaker {
 
             case ci::app::KeyEvent::KEY_LEFT:
                 container_.PlayerLeft();
+                break;
+
+            case ci::app::KeyEvent::KEY_a:
+                ComputerPlayer player;
+                player.SetComputerMovement(container_);
+
                 break;
         }
     }

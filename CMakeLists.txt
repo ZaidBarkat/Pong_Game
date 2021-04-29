@@ -55,7 +55,8 @@ list(APPEND CORE_SOURCE_FILES src/container.cc
         src/ball.cc
         src/rectangle.cc
         src/player_rectangle.cc
-        src/brick.cpp)
+        src/brick.cpp
+        src/computer_player.cpp)
 
 list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
 src/brick_breaker_app.cc)

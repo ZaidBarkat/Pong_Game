@@ -31,7 +31,6 @@ namespace brickbreaker {
         ci::gl::drawStrokedRect(ci::Rectf(vec2(kContainerLeftX, kContainerTopY),
                                           vec2(kContainerRightX, kContainerBottomY)));
         player_rectangle_.Draw();
-        //ball_.Draw();
         for (Ball &ball: balls_) {
             ball.Draw();
         }
@@ -58,7 +57,7 @@ namespace brickbreaker {
                 new_balls_++;
             }
 
-            if (bricks_hit == bricks_.size()) {
+            if (balls_[j].IsEndGame() || bricks_hit == bricks_.size()) {
                 exit(0);
             }
 
