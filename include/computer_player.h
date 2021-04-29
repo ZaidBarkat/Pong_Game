@@ -3,7 +3,7 @@
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
-#include "rectangle.h"
+#include "container.h"
 
 namespace brickbreaker {
 
@@ -13,11 +13,7 @@ namespace brickbreaker {
     class ComputerPlayer {
     public:
 
-
-        void SetComputerMovement(Container container);
-
-    private:
-        Container container_;
+        void SetComputerMovement(Container &container);
 
     };
 

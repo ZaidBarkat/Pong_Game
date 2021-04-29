@@ -5,11 +5,10 @@ namespace brickbreaker {
     using glm::vec2;
 
     Container::Container() {
-        ball_ = Ball(vec2(kContainerRightX, kContainerBottomY),
-                     vec2(2, -2));
-        balls_.push_back(ball_);
+        balls_.push_back(Ball(vec2(kContainerRightX, kContainerBottomY),
+                              vec2(2, -2)));
 
-        player_rectangle_ = PlayerRectangle(vec2(500, 800), vec2(700, 850));
+        player_rectangle_ = PlayerRectangle(vec2(500, 750), vec2(700, 770));
 
         int increment_column = 0;
         while (bricks_.size() != kNumberOfRows * kNumberOfColumns) {
@@ -17,8 +16,8 @@ namespace brickbreaker {
             for (int increment_row = (int) kContainerLeftX;
                  increment_row < (int) row_size; increment_row += kSizeOfRectangle) {
                 Brick brick(vec2(increment_column, increment_row),
-                                    vec2(increment_column + kSizeOfRectangle,
-                                         increment_row + kSizeOfRectangle));
+                            vec2(increment_column + kSizeOfRectangle,
+                                 increment_row + kSizeOfRectangle));
                 bricks_.push_back(brick);
             }
             increment_column += (int) kSizeOfRectangle;
@@ -63,18 +62,50 @@ namespace brickbreaker {
 
             player_rectangle_.Update(balls_[j]);
 
-            balls_[j].CollidesWithWall(vec2(kContainerLeftX, kContainerTopY), vec2(kContainerRightX, kContainerBottomY));
+            balls_[j].CollidesWithWall(vec2(kContainerLeftX, kContainerTopY),
+                                       vec2(kContainerRightX, kContainerBottomY));
 
             balls_[j].UpdatePosition();
         }
     }
 
     void Container::PlayerRight() {
-        player_rectangle_.GoRight();
+        player_rectangle_.SetRectangleBottomRightX(player_rectangle_.GetRectangleBottomRight().x + 20);
+        player_rectangle_.SetRectangleTopLeftX(player_rectangle_.GetRectangleTopLeft().x + 20);
+
     }
 
     void Container::PlayerLeft() {
-        player_rectangle_.GoLeft();
+        player_rectangle_.SetRectangleBottomRightX(player_rectangle_.GetRectangleBottomRight().x - 20);
+        player_rectangle_.SetRectangleTopLeftX(player_rectangle_.GetRectangleTopLeft().x - 20);
+
+    }
+
+    void Container::ComputerPlayer() {
+        float min_y = balls_[0].GetPosition().y;
+        float min_x = 0;
+        for (const Ball &ball : balls_) {
+            if (min_y <= ball.GetPosition().y) {
+                min_y = ball.GetPosition().y;
+                min_x = ball.GetPosition().x;
+            }
+        }
+
+        if (min_x < player_rectangle_.GetRectangleTopLeft().x) {
+            player_rectangle_.SetRectangleBottomRightX(player_rectangle_.GetRectangleBottomRight().x - 30);
+            player_rectangle_.SetRectangleTopLeftX(player_rectangle_.GetRectangleTopLeft().x - 30);
+        } else if (min_x > player_rectangle_.GetRectangleBottomRight().x) {
+            player_rectangle_.SetRectangleBottomRightX(player_rectangle_.GetRectangleBottomRight().x + 30);
+            player_rectangle_.SetRectangleTopLeftX(player_rectangle_.GetRectangleTopLeft().x + 30);
+        }
+    }
+
+    const std::vector<Ball> &Container::GetBalls() const {
+        return balls_;
+    }
+
+    const PlayerRectangle &Container::GetPlayerRectangle() const {
+        return player_rectangle_;
     }
 
 }  // namespace brickbreaker

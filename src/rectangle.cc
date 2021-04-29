@@ -45,4 +45,12 @@ namespace brickbreaker {
         return rectangle_bottom_right_;
     }
 
+    void Rectangle::SetRectangleTopLeftX(const float &rectangleTopLeftX) {
+        rectangle_top_left_.x = rectangleTopLeftX;
+    }
+
+    void Rectangle::SetRectangleBottomRightX(const float &rectangleBottomRightX) {
+        rectangle_bottom_right_.x = rectangleBottomRightX;
+    }
+
 }  // namespace brickbreaker

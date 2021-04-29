@@ -21,6 +21,11 @@ namespace brickbreaker {
         void Update();
         void PlayerRight();
         void PlayerLeft() ;
+        void ComputerPlayer();
+
+        const std::vector<Ball> &GetBalls() const;
+
+        const PlayerRectangle &GetPlayerRectangle() const;
 
     private:
         static constexpr float kContainerLeftX = 0;
@@ -31,7 +36,6 @@ namespace brickbreaker {
         static constexpr int kNumberOfRows = 3;
         static constexpr int kNumberOfColumns = 10;
 
-        Ball ball_;
         std::vector<Ball> balls_;
         PlayerRectangle player_rectangle_;
         std::vector<Brick> bricks_;

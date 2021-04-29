@@ -29,9 +29,7 @@ namespace brickbreaker {
                 break;
 
             case ci::app::KeyEvent::KEY_a:
-                ComputerPlayer player;
-                player.SetComputerMovement(container_);
-
+                container_.ComputerPlayer();
                 break;
         }
     }

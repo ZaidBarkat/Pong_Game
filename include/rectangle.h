@@ -26,6 +26,10 @@ namespace brickbreaker {
 
         const vec2 &GetRectangleBottomRight() const;
 
+        void SetRectangleTopLeftX(const float &rectangleTopLeftX);
+
+        void SetRectangleBottomRightX(const float &rectangleBottomRightX);
+
 
     protected:
         vec2 rectangle_top_left_;

@@ -18,13 +18,6 @@ namespace brickbreaker {
         PlayerRectangle(vec2 top_left, vec2 bottom_right) : Rectangle(top_left, bottom_right) {};
         PlayerRectangle () {}
 
-        void GoLeft();
-
-        void GoRight();
-
-
-    private:
-
     };
 
 }  // namespace brickbreaker
