@@ -29,7 +29,15 @@ namespace brickbreaker {
                 break;
 
             case ci::app::KeyEvent::KEY_a:
-                container_.ComputerPlayer();
+                ComputerPlayer player;
+                std::string direction = player.ComputerMovement(container_);
+
+                if (direction == "left") {
+                    container_.PlayerLeft();
+                } else if (direction == "right") {
+                    container_.PlayerRight();
+                }
+
                 break;
         }
     }

@@ -13,7 +13,7 @@ namespace brickbreaker {
     class ComputerPlayer {
     public:
 
-        void SetComputerMovement(Container &container);
+        std::string ComputerMovement(Container &container);
 
     };
 

@@ -23,7 +23,7 @@ namespace brickbreaker {
         position_ += velocity_;
     }
 
-    bool Ball::CollidesWithLine(vec2 top_left, vec2 bottom_right) {
+    bool Ball::CollidesWithLine(vec2 &top_left, vec2 &bottom_right) {
         // if the position in the x direction is either hitting the left or right wall
 
         if ((position_.x + kRadius == top_left.x || position_.x - kRadius == bottom_right.x) &&

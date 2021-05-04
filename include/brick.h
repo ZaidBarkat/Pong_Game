@@ -18,9 +18,9 @@ namespace brickbreaker {
         Brick(vec2 top_left, vec2 bottom_right) : Rectangle(top_left, bottom_right) {};
         Brick () {}
 
-        virtual void Draw();
+        void Draw() override;
 
-        virtual void Update(Ball& ball);
+        void Update(Ball& ball) override;
 
         bool IsHidden() const;
 

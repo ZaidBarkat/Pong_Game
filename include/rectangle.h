@@ -18,9 +18,9 @@ namespace brickbreaker {
 
         Rectangle();
 
-        void Draw();
+        virtual void Draw();
 
-        void Update(Ball& ball);
+        virtual void Update(Ball& ball);
 
         const vec2 &GetRectangleTopLeft() const;
 

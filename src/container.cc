@@ -41,23 +41,24 @@ namespace brickbreaker {
 
     void Container::Update() {
         for (size_t j = 0; j < balls_.size(); j++) {
-            int bricks_hit = 0;
+            bricks_hit_ = 0;
             for (size_t i = 0; i < bricks_.size(); i++) {
                 bricks_[i].Update(balls_[j]);
 
                 if (bricks_[i].IsHidden()) {
-                    ++bricks_hit;
+                    ++bricks_hit_;
                 }
             }
 
-            if (bricks_hit >= 3 && new_balls_ != 4) {
+            if (bricks_hit_ >= 3 && balls_.size() != 4) {
                 balls_.push_back(Ball(vec2(kContainerRightX, kContainerBottomY),
                                       vec2(2, 2)));
-                new_balls_++;
             }
 
-            if (balls_[j].IsEndGame() || bricks_hit == bricks_.size()) {
+            if (balls_[j].IsEndGame() && balls_.empty() || bricks_hit_ == bricks_.size()) {
                 exit(0);
+            } else if (balls_[j].IsEndGame()) {
+                balls_.erase(balls_.begin() + j);
             }
 
             player_rectangle_.Update(balls_[j]);
@@ -70,34 +71,15 @@ namespace brickbreaker {
     }
 
     void Container::PlayerRight() {
-        player_rectangle_.SetRectangleBottomRightX(player_rectangle_.GetRectangleBottomRight().x + 20);
-        player_rectangle_.SetRectangleTopLeftX(player_rectangle_.GetRectangleTopLeft().x + 20);
+        player_rectangle_.SetRectangleBottomRightX(player_rectangle_.GetRectangleBottomRight().x + 30);
+        player_rectangle_.SetRectangleTopLeftX(player_rectangle_.GetRectangleTopLeft().x + 30);
 
     }
 
     void Container::PlayerLeft() {
-        player_rectangle_.SetRectangleBottomRightX(player_rectangle_.GetRectangleBottomRight().x - 20);
-        player_rectangle_.SetRectangleTopLeftX(player_rectangle_.GetRectangleTopLeft().x - 20);
+        player_rectangle_.SetRectangleBottomRightX(player_rectangle_.GetRectangleBottomRight().x - 30);
+        player_rectangle_.SetRectangleTopLeftX(player_rectangle_.GetRectangleTopLeft().x - 30);
 
-    }
-
-    void Container::ComputerPlayer() {
-        float min_y = balls_[0].GetPosition().y;
-        float min_x = 0;
-        for (const Ball &ball : balls_) {
-            if (min_y <= ball.GetPosition().y) {
-                min_y = ball.GetPosition().y;
-                min_x = ball.GetPosition().x;
-            }
-        }
-
-        if (min_x < player_rectangle_.GetRectangleTopLeft().x) {
-            player_rectangle_.SetRectangleBottomRightX(player_rectangle_.GetRectangleBottomRight().x - 30);
-            player_rectangle_.SetRectangleTopLeftX(player_rectangle_.GetRectangleTopLeft().x - 30);
-        } else if (min_x > player_rectangle_.GetRectangleBottomRight().x) {
-            player_rectangle_.SetRectangleBottomRightX(player_rectangle_.GetRectangleBottomRight().x + 30);
-            player_rectangle_.SetRectangleTopLeftX(player_rectangle_.GetRectangleTopLeft().x + 30);
-        }
     }
 
     const std::vector<Ball> &Container::GetBalls() const {
