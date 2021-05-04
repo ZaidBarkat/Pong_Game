@@ -39,7 +39,7 @@ namespace brickbreaker {
         std::vector<Ball> balls_;
         PlayerRectangle player_rectangle_;
         std::vector<Brick> bricks_;
-        int bricks_hit_;
+        int bricks_hit_ = 0;
     };
 
 }  // namespace brickbreaker

@@ -22,13 +22,18 @@ namespace brickbreaker {
             }
             increment_column += (int) kSizeOfRectangle;
         }
-
     }
 
     void Container::Display() {
         ci::gl::color(ci::Color("white"));
         ci::gl::drawStrokedRect(ci::Rectf(vec2(kContainerLeftX, kContainerTopY),
                                           vec2(kContainerRightX, kContainerBottomY)));
+
+        ci::gl::drawStringCentered(
+                "Score: " + std::to_string(bricks_hit_),
+                vec2(40, 950),
+                "cyan", ci::Font("Arial", 30));
+
         player_rectangle_.Draw();
         for (Ball &ball: balls_) {
             ball.Draw();
@@ -41,21 +46,22 @@ namespace brickbreaker {
 
     void Container::Update() {
         for (size_t j = 0; j < balls_.size(); j++) {
-            bricks_hit_ = 0;
+            int bricks_hit = 0;
             for (size_t i = 0; i < bricks_.size(); i++) {
                 bricks_[i].Update(balls_[j]);
 
                 if (bricks_[i].IsHidden()) {
-                    ++bricks_hit_;
+                    ++bricks_hit;
+                    bricks_hit_ = bricks_hit;
                 }
             }
 
-            if (bricks_hit_ >= 3 && balls_.size() != 4) {
+            if (bricks_hit >= 3 && balls_.size() != 4) {
                 balls_.push_back(Ball(vec2(kContainerRightX, kContainerBottomY),
                                       vec2(2, 2)));
             }
 
-            if (balls_[j].IsEndGame() && balls_.empty() || bricks_hit_ == bricks_.size()) {
+            if (balls_[j].IsEndGame() && balls_.empty() || bricks_hit == bricks_.size()) {
                 exit(0);
             } else if (balls_[j].IsEndGame()) {
                 balls_.erase(balls_.begin() + j);
