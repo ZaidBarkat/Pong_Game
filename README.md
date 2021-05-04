@@ -24,6 +24,9 @@ you lose.
 # Start
 
 Use CLion, or any other c++ IDE to run the brick-breaker program.
+Make sure to download Cinder properly, going to https://libcinder.org/download
+and creating a folder to extract the cinder library into.
+
 * CLion
     * Build program, run tests, then run program
     
