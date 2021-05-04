@@ -21,25 +21,26 @@ namespace brickbreaker {
         void Update();
         void PlayerRight();
         void PlayerLeft() ;
-        void ComputerPlayer();
+        void Reset();
+        void DecrementLevel();
 
         const std::vector<Ball> &GetBalls() const;
 
         const PlayerRectangle &GetPlayerRectangle() const;
+
+        void SetBricks(const std::vector<Brick> &bricks);
 
     private:
         static constexpr float kContainerLeftX = 0;
         static constexpr float kContainerTopY = 0;
         static constexpr float kContainerRightX = 1000;
         static constexpr float kContainerBottomY = 1000;
-        static constexpr int kSizeOfRectangle = 100;
-        static constexpr int kNumberOfRows = 3;
-        static constexpr int kNumberOfColumns = 10;
 
         std::vector<Ball> balls_;
         PlayerRectangle player_rectangle_;
         std::vector<Brick> bricks_;
         int bricks_hit_ = 0;
+        int level_ = 0;
     };
 
 }  // namespace brickbreaker

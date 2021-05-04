@@ -4,6 +4,7 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "container.h"
+#include "levels.h"
 
 namespace brickbreaker {
 
@@ -24,6 +25,9 @@ namespace brickbreaker {
 
     private:
         Container container_;
+
+        int level_number_ = 1;
+        Levels level_;
 
     };
 

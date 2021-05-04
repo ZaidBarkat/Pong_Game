@@ -1,3 +1,4 @@
+#include <levels.h>
 #include "container.h"
 
 namespace brickbreaker {
@@ -9,19 +10,24 @@ namespace brickbreaker {
                               vec2(2, -2)));
 
         player_rectangle_ = PlayerRectangle(vec2(500, 750), vec2(700, 770));
+        level_ = 1;
+        Levels level;
+        level.SetLevel(level_);
+        bricks_ = level.PickLevel();
 
-        int increment_column = 0;
-        while (bricks_.size() != kNumberOfRows * kNumberOfColumns) {
-            float row_size = kContainerBottomY / kNumberOfRows - kSizeOfRectangle;
-            for (int increment_row = (int) kContainerLeftX;
-                 increment_row < (int) row_size; increment_row += kSizeOfRectangle) {
-                Brick brick(vec2(increment_column, increment_row),
-                            vec2(increment_column + kSizeOfRectangle,
-                                 increment_row + kSizeOfRectangle));
-                bricks_.push_back(brick);
-            }
-            increment_column += (int) kSizeOfRectangle;
-        }
+
+        //int increment_column = 0;
+//        while (bricks_.size() != kNumberOfRows * kNumberOfColumns) {
+//            float row_size = kContainerBottomY / kNumberOfRows - kSizeOfRectangle;
+//            for (int increment_row = (int) kContainerLeftX;
+//                 increment_row < (int) row_size; increment_row += kSizeOfRectangle) {
+//                Brick brick(vec2(increment_column, increment_row),
+//                            vec2(increment_column + kSizeOfRectangle,
+//                                 increment_row + kSizeOfRectangle));
+//                bricks_.push_back(brick);
+//            }
+//            increment_column += (int) kSizeOfRectangle;
+//        }
     }
 
     void Container::Display() {
@@ -85,6 +91,14 @@ namespace brickbreaker {
     void Container::PlayerLeft() {
         player_rectangle_.SetRectangleBottomRightX(player_rectangle_.GetRectangleBottomRight().x - 30);
         player_rectangle_.SetRectangleTopLeftX(player_rectangle_.GetRectangleTopLeft().x - 30);
+    }
+
+    void Container::Reset() {
+        balls_.clear();
+        balls_.push_back(Ball(vec2(kContainerRightX, kContainerBottomY),
+                              vec2(2, -2)));
+        player_rectangle_ = PlayerRectangle(vec2(500, 750), vec2(700, 770));
+        bricks_hit_ = 0;
 
     }
 
@@ -94,6 +108,10 @@ namespace brickbreaker {
 
     const PlayerRectangle &Container::GetPlayerRectangle() const {
         return player_rectangle_;
+    }
+
+    void Container::SetBricks(const std::vector<Brick> &bricks) {
+        bricks_ = bricks;
     }
 
 }  // namespace brickbreaker

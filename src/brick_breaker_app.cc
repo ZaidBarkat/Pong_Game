@@ -1,4 +1,5 @@
 #include <computer_player.h>
+#include <levels.h>
 #include "brick_breaker_app.h"
 
 namespace brickbreaker {
@@ -26,6 +27,18 @@ namespace brickbreaker {
 
             case ci::app::KeyEvent::KEY_LEFT:
                 container_.PlayerLeft();
+                break;
+
+            case ci::app::KeyEvent::KEY_q:
+                level_.SetLevel(--level_number_);
+                container_.SetBricks(level_.PickLevel());
+                container_.Reset();
+                break;
+
+            case ci::app::KeyEvent::KEY_e:
+                level_.SetLevel(++level_number_);
+                container_.SetBricks(level_.PickLevel());
+                container_.Reset();
                 break;
 
             case ci::app::KeyEvent::KEY_a:
