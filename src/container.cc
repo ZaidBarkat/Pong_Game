@@ -14,20 +14,6 @@ namespace brickbreaker {
         Levels level;
         level.SetLevel(level_);
         bricks_ = level.PickLevel();
-
-
-        //int increment_column = 0;
-//        while (bricks_.size() != kNumberOfRows * kNumberOfColumns) {
-//            float row_size = kContainerBottomY / kNumberOfRows - kSizeOfRectangle;
-//            for (int increment_row = (int) kContainerLeftX;
-//                 increment_row < (int) row_size; increment_row += kSizeOfRectangle) {
-//                Brick brick(vec2(increment_column, increment_row),
-//                            vec2(increment_column + kSizeOfRectangle,
-//                                 increment_row + kSizeOfRectangle));
-//                bricks_.push_back(brick);
-//            }
-//            increment_column += (int) kSizeOfRectangle;
-//        }
     }
 
     void Container::Display() {

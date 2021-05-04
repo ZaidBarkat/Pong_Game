@@ -20,6 +20,7 @@ namespace brickbreaker {
         void Draw();
 
         bool CollidesWithLine(vec2 &top_left, vec2 &bottom_right);
+
         void CollidesWithWall(vec2 top_left, vec2 bottom_right);
 
         void UpdatePosition();

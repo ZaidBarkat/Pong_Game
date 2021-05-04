@@ -16,11 +16,12 @@ namespace brickbreaker {
     public:
 
         Brick(vec2 top_left, vec2 bottom_right) : Rectangle(top_left, bottom_right) {};
-        Brick () {}
+
+        Brick() {}
 
         void Draw() override;
 
-        void Update(Ball& ball) override;
+        void Update(Ball &ball) override;
 
         bool IsHidden() const;
 

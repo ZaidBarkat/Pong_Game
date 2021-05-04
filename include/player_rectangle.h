@@ -16,7 +16,8 @@ namespace brickbreaker {
     public:
 
         PlayerRectangle(vec2 top_left, vec2 bottom_right) : Rectangle(top_left, bottom_right) {};
-        PlayerRectangle () {}
+
+        PlayerRectangle() {}
 
     };
 

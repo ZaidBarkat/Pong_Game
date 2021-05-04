@@ -18,10 +18,15 @@ namespace brickbreaker {
         Container();
 
         void Display();
+
         void Update();
+
         void PlayerRight();
-        void PlayerLeft() ;
+
+        void PlayerLeft();
+
         void Reset();
+
         void DecrementLevel();
 
         const std::vector<Ball> &GetBalls() const;
