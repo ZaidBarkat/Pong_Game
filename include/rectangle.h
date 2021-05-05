@@ -10,7 +10,7 @@ namespace brickbreaker {
     using glm::vec2;
 
 /**
- * An container for the Brick Breaker game.
+ * Creation of bricks and platform
  */
     class Rectangle {
     public:

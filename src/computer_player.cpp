@@ -10,7 +10,7 @@ namespace brickbreaker {
         float min_y = balls[0].GetPosition().y;
         float min_x = 0;
         for (const Ball &ball : balls) {
-            if (min_y <= ball.GetPosition().y) {
+            if (min_y <= ball.GetPosition().y && ball.GetVelocity().y > 0) {
                 min_y = ball.GetPosition().y;
                 min_x = ball.GetPosition().x;
             }

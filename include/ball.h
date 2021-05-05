@@ -9,7 +9,7 @@ namespace brickbreaker {
     using glm::vec2;
 
 /**
- * An container for the Brick Breaker game.
+ * Ball object for the player to hit.
  */
     class Ball {
     public:
@@ -17,12 +17,28 @@ namespace brickbreaker {
 
         Ball();
 
+        /**
+         * Draws the ball
+         */
         void Draw();
 
+        /**
+         * checks if the ball is hitting any of the walls
+         *
+         * @param top_left the top left of the wall
+         * @param bottom_right of the wall
+         */
         void CollidesWithWall(vec2 top_left, vec2 bottom_right);
 
+        /**
+         * add velocity to the position
+         */
         void UpdatePosition();
 
+        /**
+         * checks if the ball is hitting the bottom wall
+         * @return
+         */
         bool IsEndGame();
 
         const vec2 &GetVelocity() const;

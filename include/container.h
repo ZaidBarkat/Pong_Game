@@ -17,14 +17,29 @@ namespace brickbreaker {
     public:
         Container();
 
+        /**
+         * draws the bricks, player , and balls
+         */
         void Display();
 
+        /**
+         * updates the ball and rectangles
+         */
         void Update();
 
+        /**
+         * makes the player go right
+         */
         void PlayerRight();
 
+        /**
+         * makes the player go left
+         */
         void PlayerLeft();
 
+        /**
+         * resets the ball, balls hit, and resets the rectangle
+         */
         void Reset();
 
         const std::vector<Ball> &GetBalls() const;

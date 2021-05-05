@@ -68,13 +68,15 @@ namespace brickbreaker {
     }
 
     void Container::PlayerRight() {
-        player_rectangle_.SetRectangleBottomRightX(player_rectangle_.GetRectangleBottomRight().x + 30);
+        player_rectangle_.SetRectangleBottomRightX(player_rectangle_.GetRectangleBottomRight().x
+        + 30);
         player_rectangle_.SetRectangleTopLeftX(player_rectangle_.GetRectangleTopLeft().x + 30);
 
     }
 
     void Container::PlayerLeft() {
-        player_rectangle_.SetRectangleBottomRightX(player_rectangle_.GetRectangleBottomRight().x - 30);
+        player_rectangle_.SetRectangleBottomRightX(player_rectangle_.GetRectangleBottomRight().x
+        - 30);
         player_rectangle_.SetRectangleTopLeftX(player_rectangle_.GetRectangleTopLeft().x - 30);
     }
 

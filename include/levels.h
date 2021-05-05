@@ -7,7 +7,7 @@ namespace brickbreaker {
 
 
 /**
- * An container for the Brick Breaker game.
+ * a class that contains all 5 levels of the brick breaker game
  */
     class Levels {
 
@@ -24,6 +24,12 @@ namespace brickbreaker {
 
         std::vector<Brick> LevelFive();
 
+        /**
+         * use to pick the level from the container, to change the level
+         *
+         * @param level that is being chosen
+         * @return the bricks of the new level
+         */
         std::vector<Brick> PickLevel(int level);
 
     };

@@ -8,7 +8,7 @@
 namespace brickbreaker {
 
 /**
- * A container for the Brick Breaker game.
+ * computer player to figure out how to hit the balls effectively
  */
     class ComputerPlayer {
     public:

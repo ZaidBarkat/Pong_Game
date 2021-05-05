@@ -21,6 +21,11 @@ namespace brickbreaker {
 
         void Draw() override;
 
+        /**
+         * updates the velocity of the ball depending on the rectangle
+         *
+         * @param ball that is being updated
+         */
         void Update(Ball &ball) override;
 
         bool IsHidden() const;

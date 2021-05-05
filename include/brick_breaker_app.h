@@ -9,7 +9,7 @@
 namespace brickbreaker {
 
 /**
- * An app for visualizing the behavior of an ideal gas.
+ * An app for visualizing the behavior of an brick breaker game.
  */
     class BrickBreakerApp : public ci::app::App {
     public:
@@ -19,6 +19,11 @@ namespace brickbreaker {
 
         void update() override;
 
+        /**
+         * checking if the key is being pressed down, moves the player
+         *
+         * @param event
+         */
         void keyDown(ci::app::KeyEvent event) override;
 
         // provided that you can see the entire UI on your screen.
