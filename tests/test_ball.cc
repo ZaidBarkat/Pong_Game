@@ -7,22 +7,6 @@ using glm::vec2;
 TEST_CASE("Ball Tests") {
     brickbreaker::Ball ball(vec2(0, 0), vec2(1000, 1000));
 
-    SECTION("test colliding with rectangle") {
-
-        SECTION("test colliding with bottom line") {
-            REQUIRE(ball.CollidesWithLine(vec2(500, 500), vec2(600, 492)));
-        }
-        SECTION("test colliding with top line") {
-            REQUIRE(ball.CollidesWithLine(vec2(500, 508), vec2(600, 600)));
-        }
-        SECTION("test colliding with right line") {
-            REQUIRE(ball.CollidesWithLine(vec2(500, 500), vec2(492, 500)));
-        }
-        SECTION("test colliding with left line") {
-            REQUIRE(ball.CollidesWithLine(vec2(508, 500), vec2(500, 500)));
-        }
-    }
-
     SECTION("test colliding with wall") {
 
         SECTION("test colliding with bottom wall") {

@@ -126,23 +126,20 @@ namespace brickbreaker {
         return bricks;
     }
 
-    std::vector<Brick> Levels::PickLevel() {
-        if (level_ == 1) {
+    std::vector<Brick> Levels::PickLevel(int level) {
+        if (level == 1) {
             return LevelOne();
-        } else if (level_ == 2) {
+        } else if (level == 2) {
             return LevelTwo();
-        } else if (level_ == 3) {
+        } else if (level == 3) {
             return LevelThree();
-        } else if (level_ == 4) {
+        } else if (level == 4) {
             return LevelFour();
-        } else if (level_ == 5) {
+        } else if (level == 5) {
             return LevelFive();
         } else {
             throw std::invalid_argument("no level has been created");
         }
     }
 
-    void Levels::SetLevel(int level) {
-        level_ = level;
-    }
 }  // namespace brickbreaker

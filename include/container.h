@@ -27,13 +27,13 @@ namespace brickbreaker {
 
         void Reset();
 
-        void DecrementLevel();
-
         const std::vector<Ball> &GetBalls() const;
 
         const PlayerRectangle &GetPlayerRectangle() const;
 
         void SetBricks(const std::vector<Brick> &bricks);
+
+        void SetPlayerRectangle(const PlayerRectangle &playerRectangle);
 
     private:
         static constexpr float kContainerLeftX = 0;

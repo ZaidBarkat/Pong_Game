@@ -24,14 +24,8 @@ namespace brickbreaker {
 
         std::vector<Brick> LevelFive();
 
-        std::vector<Brick> PickLevel();
+        std::vector<Brick> PickLevel(int level);
 
-        void SetLevel(int level);
-
-    private:
-        int level_;
-
-        std::vector<Ball> balls_;
     };
 
 }  // namespace brickbreaker

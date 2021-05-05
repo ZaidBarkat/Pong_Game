@@ -5,29 +5,37 @@
 using glm::vec2;
 
 TEST_CASE("Player Tests") {
-    brickbreaker::PlayerRectangle player(vec2(500, 500), vec2(600, 600));
+    SECTION("test Rectangle Update") {
 
-    SECTION("test Rectangle movement") {
+        brickbreaker::Ball ball(vec2(1000, 1000), vec2(2, 2));
 
-        SECTION("test Rectangle moves left") {
-            player.GoLeft();
+        SECTION("test colliding with rectangle") {
 
-            SECTION("top left x coordinate") {
-                REQUIRE(player.GetRectangleTopLeft().x == Approx(490));
+            SECTION("test colliding with bottom line") {
+                brickbreaker::PlayerRectangle player(vec2(500, 500), vec2(600, 492));
+
+                player.Update(ball);
+                REQUIRE(ball.GetVelocity().y == -2);
             }
-            SECTION("bottom right x coordinate") {
-                REQUIRE(player.GetRectangleBottomRight().x == Approx(590));
+            SECTION("test colliding with top line") {
+                brickbreaker::PlayerRectangle player(vec2(500, 508), vec2(600, 600));
+
+                player.Update(ball);
+                REQUIRE(ball.GetVelocity().y == 2);
+            }
+            SECTION("test colliding with right line") {
+                brickbreaker::PlayerRectangle player(vec2(500, 500), vec2(492, 500));
+
+                player.Update(ball);
+                REQUIRE(ball.GetVelocity().x == 2);
+            }
+            SECTION("test colliding with left line") {
+                brickbreaker::PlayerRectangle player(vec2(508, 500), vec2(500, 500));
+
+                player.Update(ball);
+                REQUIRE(ball.GetVelocity().y == -2);
             }
         }
-        SECTION("test Rectangle moves right") {
-            player.GoRight();
 
-            SECTION("top left x coordinate") {
-                REQUIRE(player.GetRectangleTopLeft().x == Approx(510));
-            }
-            SECTION("bottom right x coordinate") {
-                REQUIRE(player.GetRectangleBottomRight().x == Approx(610));
-            }
         }
     }
-}

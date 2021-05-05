@@ -12,8 +12,7 @@ namespace brickbreaker {
         player_rectangle_ = PlayerRectangle(vec2(500, 750), vec2(700, 770));
         level_ = 1;
         Levels level;
-        level.SetLevel(level_);
-        bricks_ = level.PickLevel();
+        bricks_ = level.PickLevel(level_);
     }
 
     void Container::Display() {
@@ -98,6 +97,10 @@ namespace brickbreaker {
 
     void Container::SetBricks(const std::vector<Brick> &bricks) {
         bricks_ = bricks;
+    }
+
+    void Container::SetPlayerRectangle(const PlayerRectangle &playerRectangle) {
+        player_rectangle_ = playerRectangle;
     }
 
 }  // namespace brickbreaker
