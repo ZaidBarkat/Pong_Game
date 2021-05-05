@@ -30,4 +30,13 @@ TEST_CASE("Level Tests") {
             REQUIRE(bricks.size() == 12);
         }
     }
+    SECTION("Test picking levels") {
+        SECTION("Bad level") {
+            REQUIRE_THROWS_AS(level.PickLevel(6), std::invalid_argument);
+        }
+        SECTION("Returns correct level") {
+            std::vector<brickbreaker::Brick> bricks = level.PickLevel(1);
+            REQUIRE(bricks.size() == 30);
+        }
+    }
 }
